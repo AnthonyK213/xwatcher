@@ -1,0 +1,12 @@
+[Unit]
+Description=X Watcher
+
+[Service]
+Type=simple
+WorkingDirectory=/home/<user>/.local/bin/
+ExecStart=/home/<user>/.local/bin/xwatcher
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
