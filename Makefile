@@ -1,5 +1,5 @@
 xwatcher: xwatcher.c
-	clang xwatcher.c -o xwatcher -lX11
+	$(CC) $(CFLAGS) xwatcher.c -o xwatcher -lX11
 
 .PHONY: test clean
 
