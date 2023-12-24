@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
+
 #ifdef DEBUG
   const char *type[37] = {0};
   type[2] = "KeyPress";
@@ -68,13 +69,21 @@ given display.\n");
   XMapWindow(display, window);
   XFlush(display);
 
+  int to_trigger = 1;
+
   XEvent event;
   for (;;) {
-    system("~/.xrandr-changed");
+    if (to_trigger) {
+      system("~/.xrandr-changed");
+    }
+
     XNextEvent(display, &event);
+
 #ifdef DEBUG
     printf("%s\n", type[event.type]);
 #endif
+
+    to_trigger = event.type == 22;
   }
 
   return 0;
