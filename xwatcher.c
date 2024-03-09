@@ -73,9 +73,9 @@ given display.\n");
 
   XEvent event;
   for (;;) {
-    if (to_trigger) {
-      system("~/.xrandr-changed");
-    }
+    // if (to_trigger) {
+    system("~/.xrandr-changed");
+    // }
 
     XNextEvent(display, &event);
 
@@ -83,7 +83,7 @@ given display.\n");
     printf("%s\n", type[event.type]);
 #endif
 
-    to_trigger = event.type == 22;
+    // to_trigger = event.type == 22;
   }
 
   return 0;
